@@ -1,5 +1,5 @@
-class Humain:
-
+from abc import ABC, abstractmethod
+class Humain(ABC):
     def __init__(self, name, drink="eau"):
         self.name = name
         self.drink = drink
@@ -13,6 +13,10 @@ class Humain:
     def quelEstTonNom(self):
         print(self.name)
         
+    @abstractmethod
+    def manger(self):
+        pass
+
 
 class dame(Humain):
 
@@ -44,6 +48,9 @@ class dame(Humain):
     
     def presentation(self):
         print(f"Regardez ma belle robe de couleur {self.couleur_robe()} ")
+
+    def manger(self):
+        print(f"{self.name} mange proprement, avec grâce.")
 
     
 
@@ -78,6 +85,8 @@ class Brigand(Humain):
        print(f"j'ai l'air {self.appa}, et j'ai deja kidnappé {self.nbrenlevement} dames !")
        print(f"Ma tête est mise a pris {self.bounty}$")
 
+    def manger(self):
+        print(f"{self.name} mange salement, sans manières !")
 
 
 class Cowboy(Humain) :
@@ -102,6 +111,8 @@ class Cowboy(Humain) :
     def presentation(self):
         self.parler(f"Je suis {self.name} aussi connu sous le nom de {self.adjectif} {self.name}, ma popularité est de {self.popularity}")
 
+    def manger(self):
+        print(f"{self.name} mange calmement et avec assurance.")
 
     
 class Barman(Humain) :
@@ -116,7 +127,8 @@ class Barman(Humain) :
     def presentation(self):
         print(f"je suis {self.name} et je tiens le bar Chez {self.barname} Coco")
 
-
+    def manger(self):
+        print(f"{self.name} mange tout en dégustant un bon verre de {self.drink}.")
 
 
 class sherif(Cowboy):
@@ -136,20 +148,25 @@ class sherif(Cowboy):
         print(f"je suis le Shérif {self.name}, j'ai deja arreté {self.arrest} brigand !")
 
 
-        
+    def manger(self):
+        print(f"{self.name} mange tout en surveillant les alentours pour maintenir la loi.")
 
 
-h = Humain("jean")
+
+#h = Humain("jean")
 b = Brigand("WAZAA")
 c = dame("femme")
 d = Cowboy("yhwach")
 e = Barman("yokosho")
 f = sherif("boulisse")
-d.presentation()
-c.presentation()
-c.change("yellow")
-c.presentation
-d.presentation()
+e.manger()
+#d.presentation()
+#c.presentation()
+#b.manger()
+#d.manger()
+#c.change("yellow")
+#c.presentation
+#d.presentation()
 #b.Capture(f)
 #d.shoot(b)
 #c.presentation()
